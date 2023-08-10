@@ -88,6 +88,12 @@
                 href="http://localhost/docs/example/collapsed/"
                 />
   </url><url>
+    <loc>http://localhost/docs/example/concept/</loc>
+  </url><url>
+    <loc>http://localhost/docs/example/domain/</loc>
+  </url><url>
+    <loc>http://localhost/docs/example/quickstart/</loc>
+  </url><url>
     <loc>http://localhost/posts/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <xhtml:link
