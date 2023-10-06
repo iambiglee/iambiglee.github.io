@@ -14,7 +14,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.92ccbdb2c8105d9a0dd1a31147bc8e62121d85232e5400ce18ceb6cacf31b916.js" integrity="sha256-ksy9ssgQXZoN0aMRR7yOYhIdhSMuVADOGM62ys8xuRY=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.8bedb84024bfdb6cef1a7caf6fbe031654b045e550a03c9bc811eb5f87245da9.js" integrity="sha256-i&#43;24QCS/22zvGnyvb74DFlSwReVQoDybyBHrX4ckXak=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost/docs/example/quickstart/index.xml" title="My New Hugo Site" />
 <!--
 Made with Book Theme
@@ -562,7 +562,7 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
-<p>catmq 需要访问字典表<code>information_schema.tables</code>，来获取表的自增信息，来计算待处理消息等信息。所以需要确保此表能及时更新。 对于mysql 8以上版本推荐查看 show variables like &lsquo;%information_schema_stats%&rsquo;; set global information_schema_stats_expiry=10; 设置字典表的更新时间。</p>
+<p>CatMQ 需要访问字典表<code>information_schema.tables</code>，来获取表的自增信息，来计算待处理消息等信息。所以需要确保此表能及时更新。 对于mysql 8以上版本推荐查看 show variables like &lsquo;%information_schema_stats%&rsquo;; set global information_schema_stats_expiry=10; 设置字典表的更新时间。</p>
 <p>##（二）安装步骤</p>
 <ol>
 <li>在github上，下载代码到本地，以windows 系统为例，下面所有的项目默认目录为d://catmq.</li>
@@ -600,8 +600,9 @@ d:\catmq\mq-rest\src\main\resources\application-fat.properties
 </blockquote>
 <p>注意：测试demo暂时还不能启动（需要等到消息库初始化完成，并且在portal上手动创建测试程序所需的topic、consumerGroup、订阅关系以后可以启动）
 5. 启动验证系统。
-在chrome浏览器访问 http://localhost:8080/ 如果出现下图表示PMQ服务端启动正常。
-访问 http://localhost:8090/ 如果出现登录页面，并且可以登录成功，则证明可以正常访问，用户名和密码都是：<code>mqadmin</code></p>
+在chrome浏览器访问 http://localhost:8080/ 如果出现下图表示CatMQ服务端启动正常。
+访问 http://localhost:8090/ 如果出现登录页面，并且可以登录成功，则证明可以正常访问，用户名和密码都是：<code>mqadmin</code>
+<img src="../../../pic/quickstartborke.png" alt="img.png" /></p>
 <h2 id="三元数据的初始化">
   (三)元数据的初始化
   <a class="anchor" href="#%e4%b8%89%e5%85%83%e6%95%b0%e6%8d%ae%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96">#</a>
@@ -611,12 +612,14 @@ d:\catmq\mq-rest\src\main\resources\application-fat.properties
 <li>
 <p>初始化消息的存储位置</p>
 <ol>
-<li>启动catmq的管理页面(catmq-ui模块)，通过账号和密码<code>mqadmin</code>登录系统。然后点击左侧的“数据节点管理”</li>
-<li>点击创建</li>
-<li>跳出的数据库详细信息中，分为主库和从库，如果没有从库可以不填，数据库是我们上文中提到的mq_suc 的连接信息。</li>
+<li>启动CatMQ的管理页面(CatMQ-ui模块)，通过账号和密码<code>mqadmin</code>登录系统。然后点击左侧的“DataNode”
+<img src="../../../pic/datanodedetail.png" alt="img.png" /></li>
+<li>点击 &ldquo;Create&rdquo;
+<img src="../../../pic/datanodecreate.png" alt="img.png" /></li>
+<li>跳出的数据库详细信息中，分为主库(master)和从库(slave)，如果没有从库可以不填，数据库是我们上文中提到的mq_suc 的连接信息。</li>
 </ol>
 <blockquote>
-<p>注意：如果“”数据库名”填写的是正常消息库的名字，则“消息类型”需选择正常队列消息（如上图标红所示）。如果“”数据库名”填写的是失败消息库的名字，则“消息类型”需选择失败队列消息。</p>
+<p>注意：如果“”Database”填写的是正常消息库的名字，则“Store Type”需选择normal（如上图标红所示）。如果“”Database”填写的是失败消息库的名字，则“Store Type”需选择Abnormal。</p>
 </blockquote>
 <ol start="4">
 <li>点击“提交”，如果看到如下记录，则说明message_node_01这一个节点初始化成功。</li>
