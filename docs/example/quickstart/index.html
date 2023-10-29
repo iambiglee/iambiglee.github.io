@@ -14,7 +14,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.8bedb84024bfdb6cef1a7caf6fbe031654b045e550a03c9bc811eb5f87245da9.js" integrity="sha256-i&#43;24QCS/22zvGnyvb74DFlSwReVQoDybyBHrX4ckXak=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.6ea92109d282b6af49889a78a3c42327ef204405c7dadf9343c7693e8f3a343d.js" integrity="sha256-bqkhCdKCtq9JiJp4o8QjJ&#43;8gRAXH2t&#43;TQ8dpPo86ND0=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost/docs/example/quickstart/index.xml" title="My New Hugo Site" />
 <!--
 Made with Book Theme
@@ -635,14 +635,37 @@ messageQueue.xml文件中定义了comsumerGroup、topic、以及它们之间的�
 <p>demo就是在项目中的模式是catmqExample,这里我们已经做好了messageQueue.xml的配置，此次您无需做任何修改</p>
 <ol>
 <li>
-<p>新建topic
-登录系统管理页面Portal,默认为localhost:8090, 初始化的用户名和密码都为：admin。登录进入以后，点击页面左侧的消息主题管理进入如下画面</p>
-<p>点击“创建”按钮，进入topic 创建界面，然后再“topic名称处”输入test1</p>
-<p>点击“提交”完成topic的创建。</p>
+<p>新建topic<br>
+登录系统管理页面Portal,默认为localhost:8090, 初始化的用户名和密码都为：mqadmin。登录进入以后，点击页面左侧的消息主题管理进入如下画面<br>
+<img src="img.png" alt="img.png" /><br>
+点击“创建”按钮，进入topic 创建界面，然后再“topic名称处”输入testtopic<br>
+<img src="img_1.png" alt="img_1.png" /><br>
+点击“提交”完成topic的创建。</p>
 </li>
 <li>
-<p>新建ConsumerGroup
-再管理界面，点击左侧的消费者组管理，然后点击“创建”按钮，进入consumeGroup创建界面：</p>
+<p>新建ConsumerGroup<br>
+在管理界面，点击左侧的消费者组管理，然后点击“创建”按钮，进入consumeGroup创建界面：<br>
+<img src="img_2.png" alt="img_2.png" />
+我们创建一个名为testConsumerGroup的consumerGroup<br>
+<img src="img_3.png" alt="img_3.png" />
+创建成功之后，可以看到页面以及创建成功
+<img src="img_4.png" alt="img_4.png" /></p>
+</li>
+<li>
+<p>创建订阅关系
+建立consumerGroup和topic的关联,点击上一个画面中的subscribe开始订阅<br>
+<img src="img_5.png" alt="img_5.png" /><br>
+点击添加订阅，创建订阅关系<br>
+<img src="img_7.png" alt="img_7.png" /><br>
+点击确认，订阅成功
+<img src="img_8.png" alt="img_8.png" /></p>
+</li>
+<li>
+<p>启动客户端的demo,运行程序
+进入 &lsquo;cat-mq-client-test\target&rsquo; 下面执行 ‘java  -jar mq-client-test-001-1.0.0.jar &ndash;spring.profiles.active=fat’ 启动客户端demo</p>
+</li>
+<li>
+<p>测试消息的发送和消息的消费</p>
 </li>
 </ol>
 </article>

@@ -16,7 +16,7 @@
   <link rel="alternate" hreflang="en" href="http://localhost/en/" title="Introduction">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.8bedb84024bfdb6cef1a7caf6fbe031654b045e550a03c9bc811eb5f87245da9.js" integrity="sha256-i&#43;24QCS/22zvGnyvb74DFlSwReVQoDybyBHrX4ckXak=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.6ea92109d282b6af49889a78a3c42327ef204405c7dadf9343c7693e8f3a343d.js" integrity="sha256-bqkhCdKCtq9JiJp4o8QjJ&#43;8gRAXH2t&#43;TQ8dpPo86ND0=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost/index.xml" title="My New Hugo Site" />
 <!--
 Made with Book Theme
@@ -558,11 +558,13 @@ https://github.com/alex-shpak/hugo-book
   1.1、创建消息主题（即topic）
   <a class="anchor" href="#11%e5%88%9b%e5%bb%ba%e6%b6%88%e6%81%af%e4%b8%bb%e9%a2%98%e5%8d%b3topic">#</a>
 </h2>
-<p>发送方（producer）发消息到指定Topic之前，需要通过catMQ的portal创建该Topic，如果该Topic已存在则无须创建。下面演示一下如何创建Topic，和创建Topic时的注意事项：<!-- raw HTML omitted --><img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876366984-c221e449-c81e-4d7f-aa02-15c2cfd6db11.png#averageHue=%23fcc4c1&amp;clientId=ua80d89b2-d6e1-4&amp;from=paste&amp;height=665&amp;id=u2e4b2fb0&amp;originHeight=1330&amp;originWidth=2700&amp;originalType=binary&amp;ratio=2&amp;rotation=0&amp;showTitle=false&amp;size=307204&amp;status=done&amp;style=none&amp;taskId=ud443f7e6-3e74-498a-8eaf-3fa185b8bd9&amp;title=&amp;width=1350" alt="image.png" /></p>
-<p>点击最下方的“立即提交”按钮，完成topic的创建，进入如下页面：<!-- raw HTML omitted --><img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876461844-2791bfd9-b6a9-4527-9483-aa98e77f5c25.png#averageHue=%23f8f8f8&amp;clientId=ua80d89b2-d6e1-4&amp;from=paste&amp;height=791&amp;id=u553fe468&amp;originHeight=1582&amp;originWidth=2434&amp;originalType=binary&amp;ratio=2&amp;rotation=0&amp;showTitle=false&amp;size=224000&amp;status=done&amp;style=none&amp;taskId=uec0eebaa-377b-4096-983e-d5e62483061&amp;title=&amp;width=1217" alt="image.png" /><!-- raw HTML omitted --><img src="img/createTopicResult.png#id=ES8KW&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;status=done&amp;style=none&amp;title=" alt="" /></p>
-<p>图中可以看到我们刚刚创建的topic：testtopic<!-- raw HTML omitted --><img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876570508-f6281d96-2e3a-4827-b013-0afaef3ae912.png#averageHue=%23f3f3f3&amp;clientId=ua80d89b2-d6e1-4&amp;from=paste&amp;height=440&amp;id=u3d4cab5f&amp;originHeight=880&amp;originWidth=3178&amp;originalType=binary&amp;ratio=2&amp;rotation=0&amp;showTitle=false&amp;size=186004&amp;status=done&amp;style=none&amp;taskId=u9b3ae8da-0b67-4ace-b559-b964307bb14&amp;title=&amp;width=1589" alt="image.png" /></p>
-<p>点击每条记录最左侧的蓝色图标，可以查看该topic的操作记录。</p>
-<p>创建topic的注意事项：</p>
+<p>发送方（producer）发消息到指定Topic之前，需要通过catMQ的portal创建该Topic，如果该Topic已存在则无须创建。下面演示一下如何创建Topic，和创建Topic时的注意事项：<!-- raw HTML omitted --><img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876366984-c221e449-c81e-4d7f-aa02-15c2cfd6db11.png#averageHue=%23fcc4c1&amp;clientId=ua80d89b2-d6e1-4&amp;from=paste&amp;height=665&amp;id=u2e4b2fb0&amp;originHeight=1330&amp;originWidth=2700&amp;originalType=binary&amp;ratio=2&amp;rotation=0&amp;showTitle=false&amp;size=307204&amp;status=done&amp;style=none&amp;taskId=ud443f7e6-3e74-498a-8eaf-3fa185b8bd9&amp;title=&amp;width=1350" alt="image.png2" /></p>
+<p>点击最下方的“立即提交”按钮，完成topic的创建，进入如下页面：<!-- raw HTML omitted --> <img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876461844-2791bfd9-b6a9-4527-9483-aa98e77f5c25.png" alt="image.png" /><!-- raw HTML omitted --><img src="img/createTopicResult.png#id=ES8KW&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;status=done&amp;style=none&amp;title=" alt="" /></p>
+<p>图中可以看到我们刚刚创建的topic：testtopic<br>
+<img src="https://cdn.nlark.com/yuque/0/2023/png/754835/1697876570508-f6281d96-2e3a-4827-b013-0afaef3ae912.png" alt="image.png" /></p>
+<p>点击每条记录最左侧的蓝色图标，可以查看该topic的操作记录。
+<!-- raw HTML omitted --><br>
+创建topic的注意事项：</p>
 <ol>
 <li>Topic的名字不能以“_fail”结尾，因为系统以“_fail”结尾的Topic默认为存储失败消息的topic。</li>
 <li>负责人为该Topic的负责人，可以多选。Topic负责人拥有的权限为：
