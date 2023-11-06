@@ -2,464 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost/en/docs/example/</loc>
+    <loc>https://iambiglee.github.io/en/docs/example/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/docs/example/"
+                href="https://iambiglee.github.io/docs/example/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/docs/example/"
+                href="https://iambiglee.github.io/en/docs/example/"
                 />
   </url><url>
-    <loc>http://localhost/en/docs/example/table-of-contents/with-toc/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/table-of-contents/with-toc/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/table-of-contents/with-toc/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/with-toc/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/example/table-of-contents/without-toc/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/table-of-contents/without-toc/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/table-of-contents/without-toc/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/without-toc/</loc>
   </url><url>
-    <loc>http://localhost/en/posts/creating-a-new-theme/</loc>
+    <loc>https://iambiglee.github.io/en/posts/creating-a-new-theme/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/posts/creating-a-new-theme/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/posts/creating-a-new-theme/"
-                />
   </url><url>
-    <loc>http://localhost/en/posts/migrate-from-jekyll/</loc>
+    <loc>https://iambiglee.github.io/en/posts/migrate-from-jekyll/</loc>
     <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/posts/migrate-from-jekyll/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/posts/migrate-from-jekyll/"
-                />
   </url><url>
-    <loc>http://localhost/en/docs/example/table-of-contents/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/table-of-contents/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/table-of-contents/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/example/collapsed/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/collapsed/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/collapsed/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/example/collapsed/</loc>
   </url><url>
-    <loc>http://localhost/en/posts/</loc>
+    <loc>https://iambiglee.github.io/en/posts/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/</loc>
     <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/posts/"
+                href="https://iambiglee.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/posts/"
+                href="https://iambiglee.github.io/en/"
                 />
   </url><url>
-    <loc>http://localhost/en/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/"
-                />
+    <loc>https://iambiglee.github.io/en/posts/goisforlovers/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost/en/posts/goisforlovers/</loc>
+    <loc>https://iambiglee.github.io/en/categories/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/posts/goisforlovers/"
+                href="https://iambiglee.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/posts/goisforlovers/"
+                href="https://iambiglee.github.io/en/categories/"
                 />
   </url><url>
-    <loc>http://localhost/en/categories/</loc>
+    <loc>https://iambiglee.github.io/en/tags/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/categories/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/posts/hugoisforlovers/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/tags/go/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/tags/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/categories/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/tags/hugo/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/tags/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/categories/"
+                href="https://iambiglee.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/categories/"
+                href="https://iambiglee.github.io/en/tags/"
                 />
   </url><url>
-    <loc>http://localhost/en/tags/development/</loc>
+    <loc>https://iambiglee.github.io/en/tags/templates/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/development/"
-                />
   </url><url>
-    <loc>http://localhost/en/categories/development/</loc>
+    <loc>https://iambiglee.github.io/en/tags/themes/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/collapsed/3rd-level/4th-level/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/collapsed/3rd-level/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/hidden/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/categories/development/"
+                href="https://iambiglee.github.io/docs/example/hidden/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/categories/development/"
+                href="https://iambiglee.github.io/en/docs/example/hidden/"
                 />
   </url><url>
-    <loc>http://localhost/en/posts/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/posts/hugoisforlovers/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/posts/hugoisforlovers/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/go/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/go/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/buttons/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/golang/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/golang/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/columns/</loc>
   </url><url>
-    <loc>http://localhost/en/categories/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/categories/golang/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/categories/golang/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/details/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/hugo/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/expand/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/hints/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/templates/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/templates/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/katex/</loc>
   </url><url>
-    <loc>http://localhost/en/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/tags/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/tags/themes/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/mermaid/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/example/collapsed/3rd-level/4th-level/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/collapsed/3rd-level/4th-level/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/collapsed/3rd-level/4th-level/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/example/collapsed/3rd-level/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/collapsed/3rd-level/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/collapsed/3rd-level/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/first-page/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/example/hidden/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/example/hidden/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/example/hidden/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/second-page/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/shortcodes/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/"
-                />
+    <loc>https://iambiglee.github.io/en/docs/shortcodes/tabs/</loc>
   </url><url>
-    <loc>http://localhost/en/docs/shortcodes/buttons/</loc>
+    <loc>https://iambiglee.github.io/en/docs/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost/docs/shortcodes/buttons/"
+                href="https://iambiglee.github.io/docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost/en/docs/shortcodes/buttons/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/columns/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/columns/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/columns/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/details/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/details/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/details/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/expand/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/expand/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/expand/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/hints/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/hints/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/hints/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/katex/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/katex/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/katex/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/mermaid/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/mermaid/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/mermaid/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/section/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/section/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/section/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/section/first-page/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/section/first-page/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/section/first-page/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/section/second-page/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/section/second-page/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/section/second-page/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/shortcodes/tabs/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/shortcodes/tabs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/shortcodes/tabs/"
-                />
-  </url><url>
-    <loc>http://localhost/en/docs/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://localhost/docs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost/en/docs/"
+                href="https://iambiglee.github.io/en/docs/"
                 />
   </url>
 </urlset>
