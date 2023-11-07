@@ -14,9 +14,23 @@
                 href="https://iambiglee.github.io/docs/example/"
                 />
   </url><url>
+    <loc>https://iambiglee.github.io/docs/cv/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/introduce/</loc>
+  </url><url>
     <loc>https://iambiglee.github.io/docs/example/quickstart/</loc>
   </url><url>
     <loc>https://iambiglee.github.io/docs/example/concept/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/design/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/deployment/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/develop/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/functions/</loc>
+  </url><url>
+    <loc>https://iambiglee.github.io/docs/example/page/</loc>
   </url><url>
     <loc>https://iambiglee.github.io/docs/example/hidden/</loc>
     <xhtml:link
