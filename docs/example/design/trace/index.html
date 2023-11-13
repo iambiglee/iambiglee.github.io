@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Introduction CatMQ # CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。 通信方式和传输">
+<meta name="description" content="链路追踪设计 # Tracing # 项目的链路追踪，项目内部内置了美团的cat作为项目的链路追踪服务，catMQ的客户端和服务端支持Cat自动打点，如果自己公">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="项目介绍" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="链路追踪设计" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://iambiglee.github.io/docs/example/introduce/" />
+<meta property="og:url" content="https://iambiglee.github.io/docs/example/design/trace/" />
 
-<title>项目介绍 | CatMQ Doc</title>
+<title>链路追踪设计 | CatMQ Doc</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/zh.search.min.90ef7b87693a671dc9acd2dd99095990ce6b8e7244644b6e662cfe51c7e8f344.js" integrity="sha256-kO97h2k6Zx3JrNLdmQlZkM5rjnJEZEtuZiz&#43;Ucfo80Q=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/introduce/index.xml" title="CatMQ Doc" />
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/design/trace/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -114,7 +114,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/introduce/" class="active">项目介绍</a>
+    <a href="/docs/example/introduce/" class="">项目介绍</a>
   
 
           
@@ -168,7 +168,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
     <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
       <a href="/docs/example/design/" class="">整体设计</a>
     </label>
@@ -256,7 +256,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/design/trace/" class="">链路追踪设计</a>
+    <a href="/docs/example/design/trace/" class="active">链路追踪设计</a>
   
 
           
@@ -403,7 +403,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>项目介绍</strong>
+  <strong>链路追踪设计</strong>
 
   <label for="toc-control">
     
@@ -417,7 +417,12 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tracing">Tracing</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+  </ul>
+</nav>
 
 
 
@@ -428,25 +433,23 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="introduction-catmq">
-  Introduction CatMQ
-  <a class="anchor" href="#introduction-catmq">#</a>
+  <article class="markdown"><h1 id="链路追踪设计">
+  链路追踪设计
+  <a class="anchor" href="#%e9%93%be%e8%b7%af%e8%bf%bd%e8%b8%aa%e8%ae%be%e8%ae%a1">#</a>
 </h1>
-<p>CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。
-通信方式和传输模型的具体说明可以看下文的通信方式介绍和消息传输模型。
-CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主要应用于异步解耦，流量削峰填谷的场景。</p>
-<p>有关CatMQ的功能特性有：</p>
-<ol>
-<li>顺序消息</li>
-<li>生产者和消费者的动态缩扩容</li>
-<li>消费者和消息队列的动态平衡</li>
-<li>支持一个队列被多个消费者组订阅</li>
-<li>手动调整消费进度</li>
-<li>消息持久化和定期清理</li>
-<li>失败消息的保持和重新发送</li>
-<li>管理后台网页，可自助运维治理
-详细的功能特性介绍可以参考：- <a href="/docs/example/functions/">功能特性</a></li>
-</ol>
+<h2 id="tracing">
+  Tracing
+  <a class="anchor" href="#tracing">#</a>
+</h2>
+<p>项目的链路追踪，项目内部内置了美团的cat作为项目的链路追踪服务，catMQ的客户端和服务端支持Cat自动打点，如果自己公司内部也使用了cat的话，只要在pom中引入cat-client即可自动开始打点。
+如果不使用cat,也不用担心，只要不引入cat-client,catMQ是不会启动cat-client打点的
+或者可以使用Skywalking(may force be with you),使用javaagent 的方式用来监控链路
+其他的链路追踪软件出于时间资源的考虑，没有对应测试，欢迎大家提供其他的链路追踪方案</p>
+<h2 id="metrics">
+  Metrics
+  <a class="anchor" href="#metrics">#</a>
+</h2>
+<p>性能监控上，catMQ自动集成了Metrics，Metrics在项目中，主要用来监控消息的数量，若公司内部有搭建Promethues 的话，只要在pom 中引入micrometer-registry-Influx的依赖，将Metrics 的数据导入即可</p>
 </article>
  
       
@@ -486,7 +489,12 @@ CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tracing">Tracing</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+  </ul>
+</nav>
 
 
  

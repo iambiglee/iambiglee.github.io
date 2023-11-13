@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>整体设计 on CatMQ Doc</title>
-    <link>https://iambiglee.github.io/docs/example/design/</link>
+    <link>https://iambiglee.github.io/docs/example/design/overalldesign/</link>
     <description>Recent content in 整体设计 on CatMQ Doc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <atom:link href="https://iambiglee.github.io/docs/example/design/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://iambiglee.github.io/docs/example/design/overalldesign/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

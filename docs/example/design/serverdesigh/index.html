@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Introduction CatMQ # CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。 通信方式和传输">
+<meta name="description" content="服务端设计 # CatMQ最核心的三个功能为：消息发送，消费储存，消息拉取, CatMQ实现方法如下图所示: 上图简单描述了CatMQ消息的发送，储">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="项目介绍" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="服务端设计" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://iambiglee.github.io/docs/example/introduce/" />
+<meta property="og:url" content="https://iambiglee.github.io/docs/example/design/serverdesigh/" />
 
-<title>项目介绍 | CatMQ Doc</title>
+<title>服务端设计 | CatMQ Doc</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/zh.search.min.90ef7b87693a671dc9acd2dd99095990ce6b8e7244644b6e662cfe51c7e8f344.js" integrity="sha256-kO97h2k6Zx3JrNLdmQlZkM5rjnJEZEtuZiz&#43;Ucfo80Q=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/introduce/index.xml" title="CatMQ Doc" />
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/design/serverdesigh/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -114,7 +114,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/introduce/" class="active">项目介绍</a>
+    <a href="/docs/example/introduce/" class="">项目介绍</a>
   
 
           
@@ -168,7 +168,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
     <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
       <a href="/docs/example/design/" class="">整体设计</a>
     </label>
@@ -202,7 +202,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/design/serverdesigh/" class="">服务端设计</a>
+    <a href="/docs/example/design/serverdesigh/" class="active">服务端设计</a>
   
 
           
@@ -403,7 +403,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>项目介绍</strong>
+  <strong>服务端设计</strong>
 
   <label for="toc-control">
     
@@ -417,7 +417,14 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-消息存储设计">1. 消息存储设计</a></li>
+    <li><a href="#2-队列分配设计">2. 队列分配设计</a></li>
+    <li><a href="#3-重平衡设计">3. 重平衡设计</a></li>
+    <li><a href="#4-高可用设计">4. 高可用设计</a></li>
+  </ul>
+</nav>
 
 
 
@@ -428,25 +435,90 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="introduction-catmq">
-  Introduction CatMQ
-  <a class="anchor" href="#introduction-catmq">#</a>
+  <article class="markdown"><h1 id="服务端设计">
+  服务端设计
+  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e7%ab%af%e8%ae%be%e8%ae%a1">#</a>
 </h1>
-<p>CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。
-通信方式和传输模型的具体说明可以看下文的通信方式介绍和消息传输模型。
-CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主要应用于异步解耦，流量削峰填谷的场景。</p>
-<p>有关CatMQ的功能特性有：</p>
+<p>CatMQ最核心的三个功能为：消息发送，消费储存，消息拉取,
+CatMQ实现方法如下图所示:</p>
+<p><img src="./media/document_image_rId4.png" alt="" /></p>
+<p>上图简单描述了CatMQ消息的发送，储存，消费流程。</p>
+<p>下面将重点解决四个问题</p>
 <ol>
-<li>顺序消息</li>
-<li>生产者和消费者的动态缩扩容</li>
-<li>消费者和消息队列的动态平衡</li>
-<li>支持一个队列被多个消费者组订阅</li>
-<li>手动调整消费进度</li>
-<li>消息持久化和定期清理</li>
-<li>失败消息的保持和重新发送</li>
-<li>管理后台网页，可自助运维治理
-详细的功能特性介绍可以参考：- <a href="/docs/example/functions/">功能特性</a></li>
+<li>
+<p>每个topic有多个Queue,服务端是如何将消息存到某个Queue中去的</p>
+</li>
+<li>
+<p>每个topic有多个Queue,消费端是怎么知道去哪个Queue中去拉取数据的</p>
+</li>
+<li>
+<p>如果某个consumer挂掉了，会对系统有什么影响</p>
+</li>
+<li>
+<p>如果某个服务端挂掉了，会有什么影响</p>
+</li>
 </ol>
+<h2 id="1-消息存储设计">
+  1. 消息存储设计
+  <a class="anchor" href="#1-%e6%b6%88%e6%81%af%e5%ad%98%e5%82%a8%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>服务端储存消息的数据流转图如下</p>
+<p><img src="./media/document_image_rId5.png" alt="" /></p>
+<p>如上图所示，producer 提交信息的流程如下</p>
+<ol>
+<li>
+<p>Producer发送请求，通过负载均衡将流量分发到一台broker上面</p>
+</li>
+<li>
+<p>broker收到请求之后，会根据实际的TopicA队列的数量和计数器，对queue进行轮训储存</p>
+</li>
+<li>
+<p>负载均衡并没有使用比较流行的 dubbo和 spring Eureka.简易配合 nginx
+使用</p>
+</li>
+</ol>
+<h2 id="2-队列分配设计">
+  2. 队列分配设计
+  <a class="anchor" href="#2-%e9%98%9f%e5%88%97%e5%88%86%e9%85%8d%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>consumer是怎么知道自己应该拉取哪个Queue的消息呢？</p>
+<p>在consumer注册的时候，服务端会对consumer 进行队列分配，分配的逻辑如下图</p>
+<p><img src="./media/document_image_rId6.png" alt="" /></p>
+<p>如图所示，最基本的设计是，一个consumer可以对应多个Queue,
+一个Queue只能对应一个consumer, consumer 和 Queue是一对多的关系。</p>
+<p>系统在启动的时候，如果有consumer注册进来，服务端要根据consumerGroup下面的consumer数量，consumerGroup订阅的所有的topic的队列数量进行队列分配。原则是尽量的平衡分配consumer
+和Queue的关系。consuemrGroup和Queue的分配的关系会登记在queueOffset表中，并且有一个守护线程一直在轮训维护queueOffset表，确保数据的实时准确性。</p>
+<p>例如上图的对应关系中，consumerGroup中有三个consumer,consumerGroup订阅的topic一共分配了6个Queue。那么系统的分配算法就是平均的将这六个Queue
+平均的分给三个消费者。</p>
+<p>那如果在系统正常运行的时候，如果consumer的数量出现变化，或者当前Topic
+下面Queue
+的数量出现变化，系统是如何确保消费者和队列的对应关系的呢？请看下文的重平衡设计</p>
+<h2 id="3-重平衡设计">
+  3. 重平衡设计
+  <a class="anchor" href="#3-%e9%87%8d%e5%b9%b3%e8%a1%a1%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>为了解决consuemr和Queue数量动态变化的时候，出现实时情况和QueueOffset表记录不一致的问题，我们单独做出一个消费者和队列的重平衡设计，设计图如下</p>
+<p><img src="./media/document_image_rId7.png" alt="" /></p>
+<p>如上图所示，重平衡的逻辑如下</p>
+<ol>
+<li>
+<p>CatMQ有一个重平衡器，它用来监控consumer的加入和退出，topic扩容和缩容</p>
+</li>
+<li>
+<p>当监控到第一步的出现数据变化的时候，就回触发重平衡对这个consumerGroup进行重平衡操作,上图中是
+Consumer3 退出消费</p>
+</li>
+<li>
+<p>重平衡器对需要重平衡的consumerGroup,进行consumer和Queue进行重新分配，将
+Queue3 交给 Consumer1 消费</p>
+</li>
+</ol>
+<h2 id="4-高可用设计">
+  4. 高可用设计
+  <a class="anchor" href="#4-%e9%ab%98%e5%8f%af%e7%94%a8%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>作为一个分布式消息队列系统，我是怎么设计的分布式和高可用的呢？
+具体可以参考： - <a href="/docs/example/design/highavaliable/">HA Design</a></p>
 </article>
  
       
@@ -486,7 +558,14 @@ CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-消息存储设计">1. 消息存储设计</a></li>
+    <li><a href="#2-队列分配设计">2. 队列分配设计</a></li>
+    <li><a href="#3-重平衡设计">3. 重平衡设计</a></li>
+    <li><a href="#4-高可用设计">4. 高可用设计</a></li>
+  </ul>
+</nav>
 
 
  

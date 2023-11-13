@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CatMq的领域模型 # CatMq 是一款在kafka基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。通信方式和">
+<meta name="description" content="功能特性 # 顺序消息 # 顺序消息是CatMQ最所支持的一个消息功能特性，所谓的顺序消息就是一个FIFO模型的消息队列，先发送的消息优先消费。Ca">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="功能特性" />
 <meta property="og:description" content="" />
@@ -15,7 +15,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.5120baef9ec46ecd678572e60c0fc0ce3f9f6f87298487a3151492791e77c363.js" integrity="sha256-USC6757Ebs1nhXLmDA/Azj&#43;fb4cphIejFRSSeR53w2M=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.90ef7b87693a671dc9acd2dd99095990ce6b8e7244644b6e662cfe51c7e8f344.js" integrity="sha256-kO97h2k6Zx3JrNLdmQlZkM5rjnJEZEtuZiz&#43;Ucfo80Q=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/functions/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
@@ -101,7 +101,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/" class="">CatMQ项目文档</a>
+    <span>CatMQ项目文档</span>
   
 
           
@@ -170,12 +170,102 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
     <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
-      <a href="/docs/example/design/" class="">详细设计</a>
+      <a href="/docs/example/design/" class="">整体设计</a>
     </label>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/clientdesign/" class="">客户端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/highavaliable/" class="">高可用设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/trace/" class="">链路追踪设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 
@@ -329,18 +419,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#catmq-设计的领域模型">CatMq 设计的领域模型</a></li>
-    <li><a href="#消息message">消息（Message）</a></li>
-    <li><a href="#消费者组consumergroup">消费者组（ConsumerGroup）</a></li>
-    <li><a href="#消费者consumer">消费者（Consumer）</a></li>
-    <li><a href="#队列queue">队列（Queue）</a></li>
-    <li><a href="#消息偏移messagequeeuoffset">消息偏移（MessageQueeuOffset）</a></li>
-    <li><a href="#消息标签">消息标签</a></li>
-    <li><a href="#生产者消费者productconsumer">生产者/消费者（product/consumer）</a></li>
-    <li><a href="#消息订阅subscribe">消息订阅（subscribe）</a></li>
-    <li><a href="#服务端broke">服务端（Broke）</a></li>
-    <li><a href="#管理端portal">管理端（Portal）</a></li>
-    <li><a href="#消息标签messagetage">消息标签(MessageTage)</a></li>
+    <li><a href="#顺序消息">顺序消息</a></li>
+    <li><a href="#延时消息">延时消息</a></li>
+    <li><a href="#消费者和队列的负载均衡">消费者和队列的负载均衡</a></li>
+    <li><a href="#支持一个队列被多个消费者组订阅">支持一个队列被多个消费者组订阅</a></li>
+    <li><a href="#消费进度调整">消费进度调整</a></li>
+    <li><a href="#消息的存储和定时清理">消息的存储和定时清理</a></li>
+    <li><a href="#自助式运维治理">自助式运维治理</a></li>
   </ul>
 </nav>
 
@@ -353,59 +438,45 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="catmq的领域模型">
-  CatMq的领域模型
-  <a class="anchor" href="#catmq%e7%9a%84%e9%a2%86%e5%9f%9f%e6%a8%a1%e5%9e%8b">#</a>
+  <article class="markdown"><h1 id="功能特性">
+  功能特性
+  <a class="anchor" href="#%e5%8a%9f%e8%83%bd%e7%89%b9%e6%80%a7">#</a>
 </h1>
-<p>CatMq 是一款在kafka基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。通信方式和传输模型的具体说明可以看下文的通信方式介绍和消息传输模型。CatMq具有异步通信的优势，系统拓扑简单，系统间耦合低，主要应用于异步解耦，流量削峰填谷的场景。</p>
-<h2 id="catmq-设计的领域模型">
-  CatMq 设计的领域模型
-  <a class="anchor" href="#catmq-%e8%ae%be%e8%ae%a1%e7%9a%84%e9%a2%86%e5%9f%9f%e6%a8%a1%e5%9e%8b">#</a>
+<h2 id="顺序消息">
+  顺序消息
+  <a class="anchor" href="#%e9%a1%ba%e5%ba%8f%e6%b6%88%e6%81%af">#</a>
 </h2>
-<h2 id="消息message">
-  消息（Message）
-  <a class="anchor" href="#%e6%b6%88%e6%81%afmessage">#</a>
+<p>顺序消息是CatMQ最所支持的一个消息功能特性，所谓的顺序消息就是一个FIFO模型的消息队列，先发送的消息优先消费。CatMQ可以保证一个ConsumerGroup中的消息是按照顺序消费，如果有消息消费失败，会尝试重试消费失败的消息，如果失败重试达到指定次数，才会消费下一条消息。</p>
+<h2 id="延时消息">
+  延时消息
+  <a class="anchor" href="#%e5%bb%b6%e6%97%b6%e6%b6%88%e6%81%af">#</a>
 </h2>
-<h2 id="消费者组consumergroup">
-  消费者组（ConsumerGroup）
-  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85%e7%bb%84consumergroup">#</a>
+<p>延时消息是主要为了满足一些延迟消费的场景，延时消息的设置单位为秒。不同的消费者组订阅相同的主题的时候，可以为这些消费者组设置不同的延时时间。</p>
+<h2 id="消费者和队列的负载均衡">
+  消费者和队列的负载均衡
+  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85%e5%92%8c%e9%98%9f%e5%88%97%e7%9a%84%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1">#</a>
 </h2>
-<h2 id="消费者consumer">
-  消费者（Consumer）
-  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85consumer">#</a>
+<p>CatMQ允许消费者和实际消息的队列动态的增加或者减少，以应对消费堆积过多或者是多个消费者中有消费者意外宕机的情况。CatMQ会动态的重新匹配消费者和队列的匹配关系。注意，如果当前的消费者的数量大于等于队列的数量，此时再单纯的添加消费者的数量并不会触发重平衡。</p>
+<h2 id="支持一个队列被多个消费者组订阅">
+  支持一个队列被多个消费者组订阅
+  <a class="anchor" href="#%e6%94%af%e6%8c%81%e4%b8%80%e4%b8%aa%e9%98%9f%e5%88%97%e8%a2%ab%e5%a4%9a%e4%b8%aa%e6%b6%88%e8%b4%b9%e8%80%85%e7%bb%84%e8%ae%a2%e9%98%85">#</a>
 </h2>
-<h2 id="队列queue">
-  队列（Queue）
-  <a class="anchor" href="#%e9%98%9f%e5%88%97queue">#</a>
+<p>CatMQ支持一个队列被多个消费者组同时订阅，并且消费者组之间对队列的消费互相不影响。比如 A,B 两个消费者组同时订阅了队列 C，不论 B 消费者组发生了什么变更，都不会影响 A 消费者组的消费状态。</p>
+<h2 id="消费进度调整">
+  消费进度调整
+  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%bf%9b%e5%ba%a6%e8%b0%83%e6%95%b4">#</a>
 </h2>
-<h2 id="消息偏移messagequeeuoffset">
-  消息偏移（MessageQueeuOffset）
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e5%81%8f%e7%a7%bbmessagequeeuoffset">#</a>
+<p>CatMQ支持实时动态调整消费者组的消费进度，调整的消费者组的当前消费进度并且实时生效。所有的消费者都会从新的消费偏移开始消费。当然新的消费偏移点必须小于当前的消息队列的最大消费ID, 如果强行设置新的消费位移点大于消息队列的最大ID,会被自动重置为最大ID。</p>
+<h2 id="消息的存储和定时清理">
+  消息的存储和定时清理
+  <a class="anchor" href="#%e6%b6%88%e6%81%af%e7%9a%84%e5%ad%98%e5%82%a8%e5%92%8c%e5%ae%9a%e6%97%b6%e6%b8%85%e7%90%86">#</a>
 </h2>
-<h2 id="消息标签">
-  消息标签
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e6%a0%87%e7%ad%be">#</a>
+<p>CatMQ采用的数据库去持久化消息，DB结构的设计可以参考/doc/db 里面的DDL。为了防止冗余数据过多导致的数据溢出，队列在创建的时候，会默认设置一个消息过期时间，到达消息过期时间以后，消息会自动被清除。</p>
+<h2 id="自助式运维治理">
+  自助式运维治理
+  <a class="anchor" href="#%e8%87%aa%e5%8a%a9%e5%bc%8f%e8%bf%90%e7%bb%b4%e6%b2%bb%e7%90%86">#</a>
 </h2>
-<h2 id="生产者消费者productconsumer">
-  生产者/消费者（product/consumer）
-  <a class="anchor" href="#%e7%94%9f%e4%ba%a7%e8%80%85%e6%b6%88%e8%b4%b9%e8%80%85productconsumer">#</a>
-</h2>
-<h2 id="消息订阅subscribe">
-  消息订阅（subscribe）
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e8%ae%a2%e9%98%85subscribe">#</a>
-</h2>
-<h2 id="服务端broke">
-  服务端（Broke）
-  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e7%ab%afbroke">#</a>
-</h2>
-<h2 id="管理端portal">
-  管理端（Portal）
-  <a class="anchor" href="#%e7%ae%a1%e7%90%86%e7%ab%afportal">#</a>
-</h2>
-<h2 id="消息标签messagetage">
-  消息标签(MessageTage)
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e6%a0%87%e7%ad%bemessagetage">#</a>
-</h2>
+<p>CatMQ拥有一个运维自助治理的管理后台，在这个后台上面可以进行自助式创建和管理所有的Topic,ConsumerGroup, ComsumerOffset的创建和关系管理。支持队列的自助式创建和扩容，支持自助管理ConsumerGroup和Queue的关系管理。</p>
 </article>
  
       
@@ -447,18 +518,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#catmq-设计的领域模型">CatMq 设计的领域模型</a></li>
-    <li><a href="#消息message">消息（Message）</a></li>
-    <li><a href="#消费者组consumergroup">消费者组（ConsumerGroup）</a></li>
-    <li><a href="#消费者consumer">消费者（Consumer）</a></li>
-    <li><a href="#队列queue">队列（Queue）</a></li>
-    <li><a href="#消息偏移messagequeeuoffset">消息偏移（MessageQueeuOffset）</a></li>
-    <li><a href="#消息标签">消息标签</a></li>
-    <li><a href="#生产者消费者productconsumer">生产者/消费者（product/consumer）</a></li>
-    <li><a href="#消息订阅subscribe">消息订阅（subscribe）</a></li>
-    <li><a href="#服务端broke">服务端（Broke）</a></li>
-    <li><a href="#管理端portal">管理端（Portal）</a></li>
-    <li><a href="#消息标签messagetage">消息标签(MessageTage)</a></li>
+    <li><a href="#顺序消息">顺序消息</a></li>
+    <li><a href="#延时消息">延时消息</a></li>
+    <li><a href="#消费者和队列的负载均衡">消费者和队列的负载均衡</a></li>
+    <li><a href="#支持一个队列被多个消费者组订阅">支持一个队列被多个消费者组订阅</a></li>
+    <li><a href="#消费进度调整">消费进度调整</a></li>
+    <li><a href="#消息的存储和定时清理">消息的存储和定时清理</a></li>
+    <li><a href="#自助式运维治理">自助式运维治理</a></li>
   </ul>
 </nav>
 

@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Introduction CatMQ # CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。 通信方式和传输">
+<meta name="description" content="客户端设计 # 设计客户端的时候，本着简单高效的原则，我将生产者和消费者的放在同一个客户端，这样外部用户在使用的时候，只需要一个client 就可">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="项目介绍" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="客户端设计" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://iambiglee.github.io/docs/example/introduce/" />
+<meta property="og:url" content="https://iambiglee.github.io/docs/example/design/clientdesign/" />
 
-<title>项目介绍 | CatMQ Doc</title>
+<title>客户端设计 | CatMQ Doc</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/zh.search.min.90ef7b87693a671dc9acd2dd99095990ce6b8e7244644b6e662cfe51c7e8f344.js" integrity="sha256-kO97h2k6Zx3JrNLdmQlZkM5rjnJEZEtuZiz&#43;Ucfo80Q=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/introduce/index.xml" title="CatMQ Doc" />
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/design/clientdesign/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -114,7 +114,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/introduce/" class="active">项目介绍</a>
+    <a href="/docs/example/introduce/" class="">项目介绍</a>
   
 
           
@@ -168,7 +168,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
     <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
       <a href="/docs/example/design/" class="">整体设计</a>
     </label>
@@ -220,7 +220,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/design/clientdesign/" class="">客户端设计</a>
+    <a href="/docs/example/design/clientdesign/" class="active">客户端设计</a>
   
 
           
@@ -403,49 +403,79 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>项目介绍</strong>
+  <strong>客户端设计</strong>
 
   <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
     
   </label>
 </div>
 
 
   
-  <aside class="hidden clearfix">
-    
-  
-<nav id="TableOfContents"></nav>
-
-
-
-  </aside>
-  
  
       </header>
 
       
       
-  <article class="markdown"><h1 id="introduction-catmq">
-  Introduction CatMQ
-  <a class="anchor" href="#introduction-catmq">#</a>
+  <article class="markdown"><h1 id="客户端设计">
+  客户端设计
+  <a class="anchor" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e8%ae%be%e8%ae%a1">#</a>
 </h1>
-<p>CatMQ 是一款在参考kafka消息架构基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。
-通信方式和传输模型的具体说明可以看下文的通信方式介绍和消息传输模型。
-CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主要应用于异步解耦，流量削峰填谷的场景。</p>
-<p>有关CatMQ的功能特性有：</p>
+<p>设计客户端的时候，本着简单高效的原则，我将生产者和消费者的放在同一个客户端，这样外部用户在使用的时候，只需要一个client
+就可以达到和Broker交互的目的。</p>
+<h2 id="1-消费端设计">
+  1. 消费端设计
+  <a class="anchor" href="#1-%e6%b6%88%e8%b4%b9%e7%ab%af%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p><img src="img.png" alt="img.png" /></p>
+<p>图中的Broker 表示catMQ的服务端模块，消费者表示的是客户端的消费者模块。</p>
+<p>我们简单介绍一下catMQ的消费端实现原理</p>
 <ol>
-<li>顺序消息</li>
-<li>生产者和消费者的动态缩扩容</li>
-<li>消费者和消息队列的动态平衡</li>
-<li>支持一个队列被多个消费者组订阅</li>
-<li>手动调整消费进度</li>
-<li>消息持久化和定期清理</li>
-<li>失败消息的保持和重新发送</li>
-<li>管理后台网页，可自助运维治理
-详细的功能特性介绍可以参考：- <a href="/docs/example/functions/">功能特性</a></li>
+<li>
+<p>拉消费线程：根据消息偏移（QueueOffset,消费者当前消费到的位置）,从Broker拉取消息到本地的消费队列。</p>
+</li>
+<li>
+<p>应用消费线程：从本地消费队列中拉取消息，进行消费</p>
+</li>
+<li>
+<p>偏移提交线程：定时提交当前的消费信息到Broker</p>
+</li>
+<li>
+<p>心跳线程：定时上报心跳到Broker</p>
+</li>
+<li>
+<p>失败消息重试线程：对失败的消息进行重试消费</p>
+</li>
+</ol>
+<h2 id="2-生产者设计">
+  2. 生产者设计
+  <a class="anchor" href="#2-%e7%94%9f%e4%ba%a7%e8%80%85%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>生产者的消息发送分为两种模式，同步模式和异步模式</p>
+<h3 id="21-同步模式">
+  2.1. 同步模式
+  <a class="anchor" href="#21-%e5%90%8c%e6%ad%a5%e6%a8%a1%e5%bc%8f">#</a>
+</h3>
+<p><img src="img_1.png" alt="img_1.png" /></p>
+<p>上图中的Producer表示生产者，Broker表示服务端</p>
+<p>同步模式是一个很简单的消息存储模式，生产者将消息发送到服务端，服务端将消息持久化并且返回持久化结果</p>
+<h3 id="22-异步模式">
+  2.2. 异步模式
+  <a class="anchor" href="#22-%e5%bc%82%e6%ad%a5%e6%a8%a1%e5%bc%8f">#</a>
+</h3>
+<p><img src="img_2.png" alt="img_2.png" /></p>
+<p>上图中的Producer表示生产者，Broker表示服务端</p>
+<p>异步的发送模式通过减少外部通信，io交互的方式完成提高效率，通常用于一些不重要的消息传递</p>
+<ol>
+<li>
+<p>应用发送线程：先将消息发送到本地的缓冲队列。</p>
+</li>
+<li>
+<p>批量发送线程：把缓冲队列的消息批量发送到broker。</p>
+</li>
+<li>
+<p>broker将消息批量插入到数据库中。</p>
+</li>
 </ol>
 </article>
  
@@ -481,17 +511,6 @@ CatMQ具有异步通信的优势，系统拓扑简单，系统间耦合低，主
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents"></nav>
-
-
- 
-      </div>
-    </aside>
     
   </main>
 

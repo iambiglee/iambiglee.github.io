@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CatMq的领域模型 # CatMq 是一款在kafka基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。通信方式和">
+<meta name="description" content="部署文档 # 单机部署 # 单机部署可以参考另一篇文章Quickstart。 快速开始 分布式部署 # CatMQ 服务端需要部署的两个包是CatMQ-rest （se">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="运维部属" />
 <meta property="og:description" content="" />
@@ -15,7 +15,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/zh.search.min.5120baef9ec46ecd678572e60c0fc0ce3f9f6f87298487a3151492791e77c363.js" integrity="sha256-USC6757Ebs1nhXLmDA/Azj&#43;fb4cphIejFRSSeR53w2M=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.90ef7b87693a671dc9acd2dd99095990ce6b8e7244644b6e662cfe51c7e8f344.js" integrity="sha256-kO97h2k6Zx3JrNLdmQlZkM5rjnJEZEtuZiz&#43;Ucfo80Q=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/docs/example/deployment/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
@@ -101,7 +101,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/example/" class="">CatMQ项目文档</a>
+    <span>CatMQ项目文档</span>
   
 
           
@@ -170,12 +170,102 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
     <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
-      <a href="/docs/example/design/" class="">详细设计</a>
+      <a href="/docs/example/design/" class="">整体设计</a>
     </label>
   
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/clientdesign/" class="">客户端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/highavaliable/" class="">高可用设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/example/design/trace/" class="">链路追踪设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 
@@ -329,18 +419,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#catmq-设计的领域模型">CatMq 设计的领域模型</a></li>
-    <li><a href="#消息message">消息（Message）</a></li>
-    <li><a href="#消费者组consumergroup">消费者组（ConsumerGroup）</a></li>
-    <li><a href="#消费者consumer">消费者（Consumer）</a></li>
-    <li><a href="#队列queue">队列（Queue）</a></li>
-    <li><a href="#消息偏移messagequeeuoffset">消息偏移（MessageQueeuOffset）</a></li>
-    <li><a href="#消息标签">消息标签</a></li>
-    <li><a href="#生产者消费者productconsumer">生产者/消费者（product/consumer）</a></li>
-    <li><a href="#消息订阅subscribe">消息订阅（subscribe）</a></li>
-    <li><a href="#服务端broke">服务端（Broke）</a></li>
-    <li><a href="#管理端portal">管理端（Portal）</a></li>
-    <li><a href="#消息标签messagetage">消息标签(MessageTage)</a></li>
+    <li><a href="#单机部署">单机部署</a></li>
+    <li><a href="#分布式部署">分布式部署</a></li>
   </ul>
 </nav>
 
@@ -353,59 +433,33 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="catmq的领域模型">
-  CatMq的领域模型
-  <a class="anchor" href="#catmq%e7%9a%84%e9%a2%86%e5%9f%9f%e6%a8%a1%e5%9e%8b">#</a>
+  <article class="markdown"><h1 id="部署文档">
+  部署文档
+  <a class="anchor" href="#%e9%83%a8%e7%bd%b2%e6%96%87%e6%a1%a3">#</a>
 </h1>
-<p>CatMq 是一款在kafka基础上发展出来的一款典型的消息队列中间件，使用异步通信的方式和发布订阅模型消息传输队列。通信方式和传输模型的具体说明可以看下文的通信方式介绍和消息传输模型。CatMq具有异步通信的优势，系统拓扑简单，系统间耦合低，主要应用于异步解耦，流量削峰填谷的场景。</p>
-<h2 id="catmq-设计的领域模型">
-  CatMq 设计的领域模型
-  <a class="anchor" href="#catmq-%e8%ae%be%e8%ae%a1%e7%9a%84%e9%a2%86%e5%9f%9f%e6%a8%a1%e5%9e%8b">#</a>
+<h2 id="单机部署">
+  单机部署
+  <a class="anchor" href="#%e5%8d%95%e6%9c%ba%e9%83%a8%e7%bd%b2">#</a>
 </h2>
-<h2 id="消息message">
-  消息（Message）
-  <a class="anchor" href="#%e6%b6%88%e6%81%afmessage">#</a>
+<p>单机部署可以参考另一篇文章Quickstart。</p>
+<ul>
+<li><a href="/docs/example/quickstart/">快速开始</a></li>
+</ul>
+<h2 id="分布式部署">
+  分布式部署
+  <a class="anchor" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e9%83%a8%e7%bd%b2">#</a>
 </h2>
-<h2 id="消费者组consumergroup">
-  消费者组（ConsumerGroup）
-  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85%e7%bb%84consumergroup">#</a>
-</h2>
-<h2 id="消费者consumer">
-  消费者（Consumer）
-  <a class="anchor" href="#%e6%b6%88%e8%b4%b9%e8%80%85consumer">#</a>
-</h2>
-<h2 id="队列queue">
-  队列（Queue）
-  <a class="anchor" href="#%e9%98%9f%e5%88%97queue">#</a>
-</h2>
-<h2 id="消息偏移messagequeeuoffset">
-  消息偏移（MessageQueeuOffset）
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e5%81%8f%e7%a7%bbmessagequeeuoffset">#</a>
-</h2>
-<h2 id="消息标签">
-  消息标签
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e6%a0%87%e7%ad%be">#</a>
-</h2>
-<h2 id="生产者消费者productconsumer">
-  生产者/消费者（product/consumer）
-  <a class="anchor" href="#%e7%94%9f%e4%ba%a7%e8%80%85%e6%b6%88%e8%b4%b9%e8%80%85productconsumer">#</a>
-</h2>
-<h2 id="消息订阅subscribe">
-  消息订阅（subscribe）
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e8%ae%a2%e9%98%85subscribe">#</a>
-</h2>
-<h2 id="服务端broke">
-  服务端（Broke）
-  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e7%ab%afbroke">#</a>
-</h2>
-<h2 id="管理端portal">
-  管理端（Portal）
-  <a class="anchor" href="#%e7%ae%a1%e7%90%86%e7%ab%afportal">#</a>
-</h2>
-<h2 id="消息标签messagetage">
-  消息标签(MessageTage)
-  <a class="anchor" href="#%e6%b6%88%e6%81%af%e6%a0%87%e7%ad%bemessagetage">#</a>
-</h2>
+<p>CatMQ 服务端需要部署的两个包是<code>CatMQ-rest</code> （server端）和<code>CatMQ-ui</code>(portal端), 并且server端和portal端都是无状态，并且内部自制了简单
+的服务发现功能，所以可以在不搭配其他的分布式组件的形式下使用和发布。   <br>
+只需要在\catmq-rest\src\main\resources 和 \catmq-ui\src\main\resources 下添加对应的环境配置即可，例如添加fat环境，
+只需要在上面对应的目录中添加application-fat.properties 文件即可，对应的配置项跟其他环境一样，只是值可能不同。
+<!-- raw HTML omitted -->
+CatMQ中自制的服务发现功能，将各个server端和portal端的状态信息都存在数据库中，并且每隔5秒钟注册心跳，所以只要server端和portal端成功链接上
+数据库即可自动服务发现。这种方案也可以结合Eureka , nginx, nacos 等服务发现的组件。
+<!-- raw HTML omitted -->
+CatMQ 分布式部署重点在于数据库的集群部署，建议使用主从数据库的方式部署元数据库（1主2从），并且交由infrastructure 运维团队运维。确保元数据
+正常使用. 部署的架构图如下所示：</p>
+<p><img src="img.png" alt="img.png" /></p>
 </article>
  
       
@@ -447,18 +501,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#catmq-设计的领域模型">CatMq 设计的领域模型</a></li>
-    <li><a href="#消息message">消息（Message）</a></li>
-    <li><a href="#消费者组consumergroup">消费者组（ConsumerGroup）</a></li>
-    <li><a href="#消费者consumer">消费者（Consumer）</a></li>
-    <li><a href="#队列queue">队列（Queue）</a></li>
-    <li><a href="#消息偏移messagequeeuoffset">消息偏移（MessageQueeuOffset）</a></li>
-    <li><a href="#消息标签">消息标签</a></li>
-    <li><a href="#生产者消费者productconsumer">生产者/消费者（product/consumer）</a></li>
-    <li><a href="#消息订阅subscribe">消息订阅（subscribe）</a></li>
-    <li><a href="#服务端broke">服务端（Broke）</a></li>
-    <li><a href="#管理端portal">管理端（Portal）</a></li>
-    <li><a href="#消息标签messagetage">消息标签(MessageTage)</a></li>
+    <li><a href="#单机部署">单机部署</a></li>
+    <li><a href="#分布式部署">分布式部署</a></li>
   </ul>
 </nav>
 
