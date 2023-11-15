@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Server Design # The three core functionalities of CatMQ are message sending, message storage, and message retrieval. The implementation of CatMQ is illustrated in the following diagram: The diagram provides a simple overview of the CatMQ message flow, including sending, storage, and consumption processes. Now, let&rsquo;s address four key questions: How does the server store messages in multiple queues for each topic? How do consumers know which queue to pull">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="服务端设计" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://iambiglee.github.io/en/docs/example/design/serverdesigh/" />
+
+<title>服务端设计 | CatMQ Doc</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/design/serverdesigh/" title="服务端设计">
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/design/serverdesigh/index.xml" title="CatMQ Doc" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>CatMQ Doc</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://iambiglee.github.io/docs/example/design/serverdesigh/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CatMQ Doc</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/introduce/" class="">Introduce</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/quickstart/" class="">Quick Start</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/concept/" class="">Concept</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
+    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
+      <a href="/en/docs/example/design/" class="">Overall Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/serverdesigh/" class="active">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/clientdesign/" class="">Client Design</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/highavaliable/" class="">High Availability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/trace/" class="">Trace</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/deployment/" class="">运维部属</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/develop/" class="">开发须知</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/functions/" class="">Functions</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/en/docs/cv/" class="">个人介绍</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>服务端设计</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-message-storage-design">1. Message Storage Design</a></li>
+    <li><a href="#2-queue-assignment-design">2. Queue Assignment Design</a></li>
+    <li><a href="#3-re-balancing-design">3. Re-balancing Design</a></li>
+    <li><a href="#4-high-availability-design">4. High Availability Design</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="server-design">
+  Server Design
+  <a class="anchor" href="#server-design">#</a>
+</h1>
+<p>The three core functionalities of CatMQ are message sending, message storage, and message retrieval. The implementation of CatMQ is illustrated in the following diagram:</p>
+<p><img src="./media/document_image_rId4.png" alt="Message Flow" /></p>
+<p>The diagram provides a simple overview of the CatMQ message flow, including sending, storage, and consumption processes.</p>
+<p>Now, let&rsquo;s address four key questions:</p>
+<ol>
+<li>How does the server store messages in multiple queues for each topic?</li>
+<li>How do consumers know which queue to pull data from for a specific topic with multiple queues?</li>
+<li>What is the impact if a consumer fails?</li>
+<li>What is the impact if a server fails?</li>
+</ol>
+<h2 id="1-message-storage-design">
+  1. Message Storage Design
+  <a class="anchor" href="#1-message-storage-design">#</a>
+</h2>
+<p>The data flow for message storage on the server is depicted in the following diagram:</p>
+<p><img src="./media/document_image_rId5.png" alt="Message Storage" /></p>
+<p>As shown in the diagram, the process for submitting messages by the producer involves the following steps:</p>
+<ol>
+<li>The producer sends a request, and load balancing distributes the traffic to a specific broker.</li>
+<li>Upon receiving the request, the broker distributes messages to queues based on the actual number of queues for Topic A and a counter, using round-robin storage.</li>
+<li>Load balancing is implemented using a simple setup with Nginx, rather than popular solutions like Dubbo or Spring Eureka.</li>
+</ol>
+<h2 id="2-queue-assignment-design">
+  2. Queue Assignment Design
+  <a class="anchor" href="#2-queue-assignment-design">#</a>
+</h2>
+<p>How does a consumer know which queue to pull data from?</p>
+<p>During consumer registration, the server allocates queues to consumers based on the logic shown in the following diagram:</p>
+<p><img src="./media/document_image_rId6.png" alt="Queue Assignment" /></p>
+<p>As illustrated, the fundamental design is that one consumer can correspond to multiple queues, and one queue can only correspond to one consumer—forming a one-to-many relationship between consumers and queues.</p>
+<p>Upon system startup, when consumers register, the server needs to allocate queues based on the number of consumers in the consumer group and the number of queues subscribed to by the consumer group for all topics. The principle is to balance the relationship between consumers and queues as evenly as possible. The relationship between the consumer group and queues is registered in the queueOffset table. A daemon thread continuously maintains the queueOffset table to ensure real-time accuracy of the data.</p>
+<p>For example, in the corresponding relationship shown in the diagram, the consumer group has three consumers, and the consumer group has been allocated a total of six queues for subscribed topics. The system&rsquo;s allocation algorithm aims to evenly distribute these six queues among the three consumers.</p>
+<p>During normal system operation, if the number of consumers changes or the number of queues for the current topic changes, how does the system ensure the consistency of the relationship between consumers and queues? This is addressed in the next section on re-balancing design.</p>
+<h2 id="3-re-balancing-design">
+  3. Re-balancing Design
+  <a class="anchor" href="#3-re-balancing-design">#</a>
+</h2>
+<p>To address the dynamic changes in the number of consumers and queues, we have a separate design for consumer and queue re-balancing, as shown in the following diagram:</p>
+<p><img src="./media/document_image_rId7.png" alt="Re-balancing" /></p>
+<p>As shown in the diagram, the logic for re-balancing is as follows:</p>
+<ol>
+<li>CatMQ has a re-balancer that monitors the addition and removal of consumers, as well as topic expansion and contraction.</li>
+<li>When changes are detected, the re-balancer triggers re-balancing operations on the affected consumer group. In the diagram, Consumer3 is leaving the consumption.</li>
+<li>The re-balancer reallocates consumers and queues for the consumer group that needs re-balancing. In the example shown, Queue3 is assigned to Consumer1 for consumption.</li>
+</ol>
+<h2 id="4-high-availability-design">
+  4. High Availability Design
+  <a class="anchor" href="#4-high-availability-design">#</a>
+</h2>
+<p>As a distributed message queue system, CatMQ is designed for distribution and high availability. For more details, you can refer to the - <a href="/en/docs/example/design/highavaliable/">HA Design</a>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-message-storage-design">1. Message Storage Design</a></li>
+    <li><a href="#2-queue-assignment-design">2. Queue Assignment Design</a></li>
+    <li><a href="#3-re-balancing-design">3. Re-balancing Design</a></li>
+    <li><a href="#4-high-availability-design">4. High Availability Design</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

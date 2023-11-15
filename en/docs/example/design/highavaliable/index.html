@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="High Availability Design # Let&rsquo;s provide a simple explanation of the overall high availability design:
+Scenario Impact Cause Individual Broker Failure No impact Brokers are stateless, and clients automatically reconnect to other brokers. Individual Message Database Failure No impact Master-slave configuration ensures high availability. Metadata Failure Only affects metadata management functions, no impact on existing production and consumption Clients and management portal cache metadata. Management Portal (Portal) Failure Only affects metadata management functions, no impact on existing production and consumption Clients and management portal cache metadata.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="High Availability" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://iambiglee.github.io/en/docs/example/design/highavaliable/" />
+
+<title>High Availability | CatMQ Doc</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/design/highavaliable/" title="高可用设计">
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/design/highavaliable/index.xml" title="CatMQ Doc" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>CatMQ Doc</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://iambiglee.github.io/docs/example/design/highavaliable/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CatMQ Doc</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/introduce/" class="">Introduce</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/quickstart/" class="">Quick Start</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/concept/" class="">Concept</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
+    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
+      <a href="/en/docs/example/design/" class="">Overall Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/clientdesign/" class="">Client Design</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/highavaliable/" class="active">High Availability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/trace/" class="">Trace</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/deployment/" class="">运维部属</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/develop/" class="">开发须知</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/functions/" class="">Functions</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/en/docs/cv/" class="">个人介绍</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>High Availability</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="high-availability-design">
+  High Availability Design
+  <a class="anchor" href="#high-availability-design">#</a>
+</h1>
+<p>Let&rsquo;s provide a simple explanation of the overall high availability design:</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Impact</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Individual Broker Failure</td>
+<td>No impact</td>
+<td>Brokers are stateless, and clients automatically reconnect to other brokers.</td>
+</tr>
+<tr>
+<td>Individual Message Database Failure</td>
+<td>No impact</td>
+<td>Master-slave configuration ensures high availability.</td>
+</tr>
+<tr>
+<td>Metadata Failure</td>
+<td>Only affects metadata management functions, no impact on existing production and consumption</td>
+<td>Clients and management portal cache metadata.</td>
+</tr>
+<tr>
+<td>Management Portal (Portal) Failure</td>
+<td>Only affects metadata management functions, no impact on existing production and consumption</td>
+<td>Clients and management portal cache metadata.</td>
+</tr>
+<tr>
+<td>Consumer Failure</td>
+<td>No impact</td>
+<td>CatMQ&rsquo;s dynamic rebalancing will redistribute consumers and queues.</td>
+</tr>
+</tbody>
+</table>
+<p>The implementation of CatMQ&rsquo;s high availability is primarily achieved by building a multi-node cluster and using a leader election mechanism to ensure its own high availability. Specifically, the following strategies are employed:</p>
+<ol>
+<li>
+<p><strong>Leader Election:</strong>
+CatMQ adopts a preemptive leader election approach. If the main master crashes or shows no response for a continuous minute, the system will re-elect a leader to ensure availability. The main master is responsible for synchronizing and updating metadata.</p>
+</li>
+<li>
+<p><strong>Master-Slave Replication:</strong>
+The main node in CatMQ reads or updates metadata from the database. The secondary node only retrieves metadata from the database while ensuring consistency between the metadata obtained by the main and secondary nodes. This way, even if the main node crashes, the new main node can maintain service availability.</p>
+</li>
+<li>
+<p><strong>Node Fault Detection:</strong>
+CatMQ uses a heartbeat mechanism for mutual confirmation and status detection. If the main server&rsquo;s heartbeat is not updated within a minute, the cluster will restart the leader election.</p>
+</li>
+<li>
+<p><strong>Write-Ahead Logging (WAL):</strong>
+CatMQ writes its status to the database during leader election and heartbeat detection. Subsequent operations are performed based on this information, allowing the system to continue operations even if the main node crashes.</p>
+</li>
+<li>
+<p><strong>Sequential Consistency:</strong>
+Each update operation is assigned a globally unique incremental transaction ID, reflecting the occurrence sequence of all transaction operations, ensuring global sequential consistency for all update operations.</p>
+</li>
+<li>
+<p><strong>Partitioning:</strong>
+CatMQ divides each topic into multiple partitions. Each partition corresponds to a table in the database, implementing a distributed storage pattern that enhances system concurrency processing capabilities and achieves load balancing.</p>
+</li>
+<li>
+<p><strong>Replication:</strong>
+Each partition in CatMQ&rsquo;s database table can be set with a corresponding replication table. This increases data redundancy, improves system fault tolerance, and ensures that services can continue even if a database encounters issues.</p>
+</li>
+<li>
+<p><strong>Database Cluster:</strong>
+CatMQ&rsquo;s configuration metadata and the real-time correspondence between the server and consumer are stored in the database in real-time. Leveraging mature database clustering solutions in the industry can further enhance system availability.</p>
+</li>
+</ol>
+<p>These design and implementation approaches enable CatMQ to achieve high availability and fault tolerance, maintaining service availability even in the face of server failures.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

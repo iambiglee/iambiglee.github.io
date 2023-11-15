@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Overall Design # Note: If you are not familiar with distributed queue systems, it is recommended to read the quick start module before diving into the overall design. Hands-on experience in implementing a queue demo will help you better understand the design. 1. Message Model # The overall message model mainly involves three modules: ConsumerGroup: Represents a collection of topics and serves as a mechanism for organizing and coordinating consumers">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="整体设计" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://iambiglee.github.io/en/docs/example/design/overalldesign/" />
+
+<title>整体设计 | CatMQ Doc</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/design/overalldesign/" title="整体设计">
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/design/overalldesign/index.xml" title="CatMQ Doc" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>CatMQ Doc</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://iambiglee.github.io/docs/example/design/overalldesign/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CatMQ Doc</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/introduce/" class="">Introduce</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/quickstart/" class="">Quick Start</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/concept/" class="">Concept</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
+    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
+      <a href="/en/docs/example/design/" class="">Overall Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/overalldesign/" class="active">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/clientdesign/" class="">Client Design</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/highavaliable/" class="">High Availability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/trace/" class="">Trace</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/deployment/" class="">运维部属</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/develop/" class="">开发须知</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/functions/" class="">Functions</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/en/docs/cv/" class="">个人介绍</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>整体设计</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-message-model">1. Message Model</a></li>
+    <li><a href="#2-architecture-model">2. Architecture Model</a></li>
+    <li><a href="#3-e-r-diagram">3. E-R Diagram</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="overall-design">
+  Overall Design
+  <a class="anchor" href="#overall-design">#</a>
+</h1>
+<blockquote>
+<p><strong>Note:</strong> If you are not familiar with distributed queue systems, it is recommended to read the quick start
+module before diving into the overall design.
+Hands-on experience in implementing a queue demo will help you better understand the design.</p>
+</blockquote>
+<h2 id="1-message-model">
+  1. Message Model
+  <a class="anchor" href="#1-message-model">#</a>
+</h2>
+<p>The overall message model mainly involves three modules:</p>
+<ol>
+<li>
+<p><strong>ConsumerGroup</strong>: Represents a collection of topics and serves as a mechanism for organizing and coordinating consumers in CatMQ. It is subscribed by a group of consumers who collectively consume the topics under this consumer group.</p>
+</li>
+<li>
+<p><strong>Topic</strong>: A messaging topic in CatMQ, serving as a logical concept for organizing and categorizing messages. Each message belongs to a specific topic, and consumers subscribe to these topics to receive corresponding messages.</p>
+</li>
+<li>
+<p><strong>Queue</strong>: A container in CatMQ for storing messages, designed as a MySQL table in CatMQ. Each topic can have multiple queues, analogous to partitions in Kafka.</p>
+</li>
+</ol>
+<p>The relationships among the three modules are illustrated in the following diagram:</p>
+<p><img src="./media/document_image_rId4.png" alt="" /></p>
+<h2 id="2-architecture-model">
+  2. Architecture Model
+  <a class="anchor" href="#2-architecture-model">#</a>
+</h2>
+<p>The architecture modules are shown in the figure below. The descriptions of each module in the figure are as follows:<img src="./media/document_image_rId5.png" alt="" /></p>
+<ol>
+<li>
+<p><strong>Broker</strong><br>
+CatMQ&rsquo;s server, primarily responsible for message delivery, retrieval, and querying, ensuring high availability of messages. Core functionalities include:
+a. Provide message sending interface
+b. Provide message retrieval interface
+c. Dynamic rebalancing of queues and consumer groups
+d. Metadata synchronization
+e. Provide synchronization of consumer offsets</p>
+</li>
+<li>
+<p><strong>Portal</strong><br>
+CatMQ&rsquo;s management interface, serving as a visualization management console for CatMQ and acting as a NameServer for managing Brokers and routing. Core functionalities include:
+a. Visualization of ConsumerGroup, topic, and Queue creation and modification
+b. Management of subscription relationships
+c. Support for message queries
+d. Various audit logs and access controls
+e. Various monitoring reports
+f. Timers for monitoring system stability</p>
+</li>
+<li>
+<p><strong>Producers/Consumers</strong><br>
+CatMQ&rsquo;s producers/consumers, both belonging to the CatMQ client. Core functionalities include:
+a. Synchronous and asynchronous message sending
+b. Message retrieval and consumption
+c. Client heartbeat and offset submission
+d. Retry and sending of failed messages</p>
+</li>
+<li>
+<p><strong>Metadata</strong><br>
+CatMQ&rsquo;s metadata database, used to record the configuration information needed by CatMQ. Core functionalities include:
+a. Store consumerGroup, topic, and subscription relationships
+b. Store information about database nodes
+c. Store allocation relationships for Queue and topic
+d. Store message offsets</p>
+</li>
+<li>
+<p><strong>Message</strong><br>
+CatMQ&rsquo;s message database, used to persist all messages.</p>
+</li>
+</ol>
+<h2 id="3-e-r-diagram">
+  3. E-R Diagram
+  <a class="anchor" href="#3-e-r-diagram">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>DbNode</strong>: Records information about the database nodes storing messages, including JDBC URL, username, and password.</p>
+</li>
+<li>
+<p><strong>Consumer</strong>: Represents the currently active consumers in the system.</p>
+</li>
+<li>
+<p><strong>Queue</strong>: Records actual allocation information for topics and queues.</p>
+</li>
+<li>
+<p><strong>QueueOffset</strong>: Records the actual correspondence between consumers and queues, including their consumption offsets (records information about a consumer consuming a specific queue).</p>
+</li>
+<li>
+<p><strong>Topic</strong>: Consists of multiple queues and is used to store messages.</p>
+</li>
+<li>
+<p><strong>ConsumerGroup</strong>: A collection of topics used to record consumer groups in the system.</p>
+</li>
+<li>
+<p><strong>ConsumerGroupConsumer</strong>: Records the relationships between consumers and consumer groups in the system.</p>
+</li>
+<li>
+<p><strong>ConsumerGroupTopic</strong>: used to record ConsumerGroup and Topic
+Corresponding relationship
+<img src="./media/document_image_rId6.png" alt="" /></p>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-message-model">1. Message Model</a></li>
+    <li><a href="#2-architecture-model">2. Architecture Model</a></li>
+    <li><a href="#3-e-r-diagram">3. E-R Diagram</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

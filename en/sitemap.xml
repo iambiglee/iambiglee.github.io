@@ -14,41 +14,163 @@
                 href="https://iambiglee.github.io/en/docs/example/"
                 />
   </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/with-toc/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/without-toc/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/posts/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/posts/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/table-of-contents/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/collapsed/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/posts/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://iambiglee.github.io/en/docs/example/design/overalldesign/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://iambiglee.github.io/"
+                href="https://iambiglee.github.io/docs/example/design/overalldesign/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://iambiglee.github.io/en/"
+                href="https://iambiglee.github.io/en/docs/example/design/overalldesign/"
                 />
   </url><url>
-    <loc>https://iambiglee.github.io/en/posts/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <loc>https://iambiglee.github.io/en/docs/cv/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/cv/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/cv/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/design/serverdesigh/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/design/serverdesigh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/design/serverdesigh/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/design/clientdesign/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/design/clientdesign/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/design/clientdesign/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/design/highavaliable/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/design/highavaliable/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/design/highavaliable/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/design/trace/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/design/trace/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/design/trace/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/introduce/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/introduce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/introduce/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/quickstart/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/quickstart/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/quickstart/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/concept/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/concept/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/concept/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/design/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/design/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/design/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/deployment/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/deployment/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/deployment/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/develop/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/develop/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/develop/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/docs/example/functions/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/docs/example/functions/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/docs/example/functions/"
+                />
   </url><url>
     <loc>https://iambiglee.github.io/en/categories/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -60,86 +182,6 @@
                 href="https://iambiglee.github.io/en/categories/"
                 />
   </url><url>
-    <loc>https://iambiglee.github.io/en/tags/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/categories/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/posts/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/categories/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://iambiglee.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://iambiglee.github.io/en/tags/"
-                />
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/collapsed/3rd-level/4th-level/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/collapsed/3rd-level/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/example/hidden/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://iambiglee.github.io/docs/example/hidden/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://iambiglee.github.io/en/docs/example/hidden/"
-                />
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/buttons/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/columns/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/details/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/expand/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/hints/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/katex/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/mermaid/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/first-page/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/section/second-page/</loc>
-  </url><url>
-    <loc>https://iambiglee.github.io/en/docs/shortcodes/tabs/</loc>
-  </url><url>
     <loc>https://iambiglee.github.io/en/docs/</loc>
     <xhtml:link
                 rel="alternate"
@@ -150,6 +192,30 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://iambiglee.github.io/en/docs/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/"
+                />
+  </url><url>
+    <loc>https://iambiglee.github.io/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://iambiglee.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://iambiglee.github.io/en/tags/"
                 />
   </url>
 </urlset>

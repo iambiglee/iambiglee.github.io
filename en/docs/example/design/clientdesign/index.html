@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Client Design # When designing the client, following the principles of simplicity and efficiency, I have integrated producers and consumers into the same client. This way, external users only need one client to interact with the Broker.
+1. Consumer Design # In the diagram, &ldquo;Broker&rdquo; represents the CatMQ server module, and &ldquo;Consumer&rdquo; represents the client&rsquo;s consumer module.
+Let&rsquo;s briefly introduce the implementation principle of CatMQ&rsquo;s consumer side:
+Pull Consumer Thread: Based on the message offset (QueueOffset, the current consumption position of the consumer), messages are pulled from the Broker to the local consumption queue.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Client Design" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://iambiglee.github.io/en/docs/example/design/clientdesign/" />
+
+<title>Client Design | CatMQ Doc</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/design/clientdesign/" title="客户端设计">
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/design/clientdesign/index.xml" title="CatMQ Doc" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>CatMQ Doc</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://iambiglee.github.io/docs/example/design/clientdesign/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CatMQ Doc</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/introduce/" class="">Introduce</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/quickstart/" class="">Quick Start</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/concept/" class="">Concept</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle" checked />
+    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
+      <a href="/en/docs/example/design/" class="">Overall Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/clientdesign/" class="active">Client Design</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/highavaliable/" class="">High Availability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/trace/" class="">Trace</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/deployment/" class="">运维部属</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/develop/" class="">开发须知</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/functions/" class="">Functions</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/en/docs/cv/" class="">个人介绍</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Client Design</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="client-design">
+  Client Design
+  <a class="anchor" href="#client-design">#</a>
+</h1>
+<p>When designing the client, following the principles of simplicity and efficiency, I have integrated producers and consumers into the same client. This way, external users only need one client to interact with the Broker.</p>
+<h2 id="1-consumer-design">
+  1. Consumer Design
+  <a class="anchor" href="#1-consumer-design">#</a>
+</h2>
+<p><img src="img.png" alt="img.png" /></p>
+<p>In the diagram, &ldquo;Broker&rdquo; represents the CatMQ server module, and &ldquo;Consumer&rdquo; represents the client&rsquo;s consumer module.</p>
+<p>Let&rsquo;s briefly introduce the implementation principle of CatMQ&rsquo;s consumer side:</p>
+<ol>
+<li>
+<p><strong>Pull Consumer Thread</strong>: Based on the message offset (QueueOffset, the current consumption position of the consumer), messages are pulled from the Broker to the local consumption queue.</p>
+</li>
+<li>
+<p><strong>Application Consumer Thread</strong>: Messages are pulled from the local consumption queue for processing.</p>
+</li>
+<li>
+<p><strong>Offset Submission Thread</strong>: Periodically submits the current consumption information to the Broker.</p>
+</li>
+<li>
+<p><strong>Heartbeat Thread</strong>: Periodically reports heartbeat to the Broker.</p>
+</li>
+<li>
+<p><strong>Failed Message Retry Thread</strong>: Retries consumption of failed messages.</p>
+</li>
+</ol>
+<h2 id="2-producer-design">
+  2. Producer Design
+  <a class="anchor" href="#2-producer-design">#</a>
+</h2>
+<p>The message sending of the producer is divided into two modes: synchronous and asynchronous.</p>
+<h3 id="21-synchronous-mode">
+  2.1. Synchronous Mode
+  <a class="anchor" href="#21-synchronous-mode">#</a>
+</h3>
+<p><img src="img_1.png" alt="img_1.png" /></p>
+<p>In the diagram, &ldquo;Producer&rdquo; represents the producer, and &ldquo;Broker&rdquo; represents the server.</p>
+<p>The synchronous mode is a straightforward message storage mode. The producer sends messages to the server, and the server persists the message and returns the result of the persistence.</p>
+<h3 id="22-asynchronous-mode">
+  2.2. Asynchronous Mode
+  <a class="anchor" href="#22-asynchronous-mode">#</a>
+</h3>
+<p><img src="img_2.png" alt="img_2.png" /></p>
+<p>In the diagram, &ldquo;Producer&rdquo; represents the producer, and &ldquo;Broker&rdquo; represents the server.</p>
+<p>The asynchronous sending mode increases efficiency by reducing external communication and I/O interactions. It is typically used for less critical message delivery.</p>
+<ol>
+<li>
+<p><strong>Application Sending Thread</strong>: Messages are first sent to the local buffer queue.</p>
+</li>
+<li>
+<p><strong>Batch Sending Thread</strong>: Messages from the buffer queue are sent to the broker in batches.</p>
+</li>
+<li>
+<p><strong>Broker inserts messages into the database in batches.</strong></p>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

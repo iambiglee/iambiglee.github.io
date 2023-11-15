@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quick Start # This page will provide a brief guide on how to quickly set up a single-node CatMQ instance.
+(I) Environment Setup # Java This project is developed based on JDK 1.8 or later. You will need JDK 1.8 or later to run the project. After configuring Java, you can check the Java environment using the java -version command. Sample output:
+java -version Java(TM) SE Runtime Environment (build 1.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Quick Start" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://iambiglee.github.io/en/docs/example/quickstart/" />
+
+<title>Quick Start | CatMQ Doc</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+  <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/quickstart/" title="快速开始">
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/quickstart/index.xml" title="CatMQ Doc" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/en/"><span>CatMQ Doc</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="https://iambiglee.github.io/docs/example/quickstart/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>CatMQ Doc</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/introduce/" class="">Introduce</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/quickstart/" class="active">Quick Start</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/concept/" class="">Concept</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
+    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
+      <a href="/en/docs/example/design/" class="">Overall Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/overalldesign/" class="">整体设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/serverdesigh/" class="">服务端设计</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/clientdesign/" class="">Client Design</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/highavaliable/" class="">High Availability</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/design/trace/" class="">Trace</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/deployment/" class="">运维部属</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/develop/" class="">开发须知</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/en/docs/example/functions/" class="">Functions</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/en/docs/cv/" class="">个人介绍</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Quick Start</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-environment-setup">(I) Environment Setup</a></li>
+    <li><a href="#ii-installation-steps">(II) Installation Steps</a></li>
+    <li><a href="#iii-metadata-initialization">(III) Metadata Initialization</a></li>
+    <li><a href="#iv-display-of-client-demo">(IV) Display of Client Demo</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="quick-start">
+  Quick Start
+  <a class="anchor" href="#quick-start">#</a>
+</h1>
+<p>This page will provide a brief guide on how to quickly set up a single-node CatMQ instance.</p>
+<h2 id="i-environment-setup">
+  (I) Environment Setup
+  <a class="anchor" href="#i-environment-setup">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Java</strong>
+This project is developed based on JDK 1.8 or later. You will need JDK 1.8 or later to run the project. After configuring Java, you can check the Java environment using the <code>java -version</code> command. Sample output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>java -version
+</span></span><span style="display:flex;"><span>Java<span style="color:#f92672">(</span>TM<span style="color:#f92672">)</span> SE Runtime Environment <span style="color:#f92672">(</span>build 1.8.0_74-b02<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Java HotSpot<span style="color:#f92672">(</span>TM<span style="color:#f92672">)</span> 64-Bit Server VM <span style="color:#f92672">(</span>build 25.74-b02, mixed mode<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Maven</strong>
+Maven 3.0 or later is required. You can download the latest version from the official website. After installing Maven, check the configuration by opening the command prompt and entering <code>mvn -v</code>. If the configuration is correct, you will see output similar to the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Maven home: D:<span style="color:#ae81ff">\s</span>oftware<span style="color:#ae81ff">\a</span>pache-maven-3.6.2<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\.</span>.
+</span></span><span style="display:flex;"><span>Java version: 1.8.0_262, vendor: Red Hat, Inc., runtime: D:<span style="color:#ae81ff">\s</span>oftware<span style="color:#ae81ff">\o</span>penjdk-1.8.0.262<span style="color:#ae81ff">\j</span>re
+</span></span><span style="display:flex;"><span>Default locale: en_US, platform encoding: GBK
+</span></span><span style="display:flex;"><span>OS name: <span style="color:#e6db74">&#34;windows 10&#34;</span>, version: <span style="color:#e6db74">&#34;10.0&#34;</span>, arch: <span style="color:#e6db74">&#34;amd64&#34;</span>, family: <span style="color:#e6db74">&#34;windows&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>MySQL</strong>
+Version 5.7 or later is required. After connecting to MySQL, you can check the version using the following command:
+<code>SHOW VARIABLES WHERE Variable_name = 'version';</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable_name</th>
+<th style="text-align:right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">version</td>
+<td style="text-align:right">5.7.0</td>
+</tr>
+</tbody>
+</table>
+<p>CatMQ needs to access the <code>information_schema.tables</code> dictionary table to retrieve information about table increments for calculating pending messages and other information. Ensure that this table is promptly updated. For MySQL 8 and above, it is recommended to check <code>show variables like '%information_schema_stats%'; set global information_schema_stats_expiry=10;</code> to set the update time for the dictionary table.</p>
+</li>
+</ol>
+<h2 id="ii-installation-steps">
+  (II) Installation Steps
+  <a class="anchor" href="#ii-installation-steps">#</a>
+</h2>
+<ol>
+<li>
+<p>Download the code from GitHub to your local machine. For this example, let&rsquo;s assume the project directory is <code>d://catmq</code>.</p>
+</li>
+<li>
+<p>Create Databases:
+CatMQ requires three types of databases: metadata database, normal message database, and failed message database. Create the databases as follows:</p>
+<ul>
+<li>Execute the <code>doc/mq_basic.sql</code> script to create the metadata database (only one needed, can set up master and standby).</li>
+<li>Execute the <code>doc/mq_message_node_01.sql</code> script to create the normal message database.</li>
+<li>Execute the <code>doc/mq_fail_message_node_01.sql</code> script to create the failed message database.</li>
+</ul>
+<p>Here&rsquo;s an example of the created databases: <code>mq_basic</code>, <code>mq_suc</code>, and <code>mq_fail</code>.</p>
+</li>
+<li>
+<p>Configure Database Information:
+CatMQ comes with default configurations for three environments: <code>fat</code>, <code>uat</code>, and <code>pro</code>. Users can add configurations for other environments by setting <code>Spring_active</code>. In the following demonstration, we will use the <code>fat</code> environment. Open the following files with a text editor:</p>
+<ul>
+<li><code>d://catmq/mq-ui/src/main/resources/application-fat.properties</code></li>
+<li><code>d://catmq/mq-rest/src/main/resources/application-fat.properties</code></li>
+</ul>
+<p>Add the metadata database information:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">spring.datasource.url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">jdbc:mysql://localhost:3306/mq_basic?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">spring.datasource.username</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">root</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">spring.datasource.password</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">root</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Compile and Run:
+Open the command prompt in <code>d://catmq</code> and run <code>mvn clean install -DskipTests</code>. If the console displays &ldquo;success,&rdquo; the compilation is successful. By default, the portal uses port 8089, the server uses port 8080, and the test demo uses port 8087. Then navigate to:</p>
+<ul>
+<li>Go to the <code>d://catmq/mq-rest/target</code> directory and run the following command to start the server:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>java -jar mq-rest.jar --spring.profiles.active<span style="color:#f92672">=</span>fat
+</span></span></code></pre></div><ul>
+<li>Go to the <code>d://catmq/mq-ui/target</code> directory and run the following command to start the portal:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>java -jar mq-ui.jar --spring.profiles.active<span style="color:#f92672">=</span>fat
+</span></span></code></pre></div><p>Note: The test demo cannot be started immediately (you need to wait for the initialization of the message database and manually create the necessary topics, consumer groups, and subscription relationships on the portal).</p>
+</li>
+<li>
+<p>Verify System Startup:
+Open Google Chrome and visit http://localhost:8080/. If the page appears as shown below, the CatMQ server has started successfully.
+Visit http://localhost:8090/. If the login page appears and you can log in successfully, it means the portal is accessible. The username and password are both <code>mqadmin</code>.
+<img src="../../../pic/quickstartborke.png" alt="img.png" /></p>
+</li>
+</ol>
+<h2 id="iii-metadata-initialization">
+  (III) Metadata Initialization
+  <a class="anchor" href="#iii-metadata-initialization">#</a>
+</h2>
+<p>To run tests, we need to initialize some data.</p>
+<ol>
+<li>
+<p>Initialize the storage location for messages:</p>
+<ol>
+<li>
+<p>Start CatMQ&rsquo;s management page (CatMQ-ui module). Log in to the system with the account and password <code>mqadmin</code>. Then click on &ldquo;DataNode.&rdquo;
+<img src="../../../pic/datanodedetail.png" alt="img.png" /></p>
+</li>
+<li>
+<p>Click on &ldquo;Create.&rdquo;
+<img src="../../../pic/datanodecreate.png" alt="img.png" /></p>
+</li>
+<li>
+<p>In the detailed database information that pops up, there are main database (master) and secondary database (slave) sections. If there is no secondary database, you can leave it empty. The database is the connection information for <code>mq_suc</code> mentioned in the previous section.</p>
+</li>
+</ol>
+<blockquote>
+<p>Note: If the &ldquo;Database&rdquo; is filled in with the name of the normal message database, the &ldquo;Store Type&rdquo; should be selected as normal (as indicated in the red box in the figure). If the &ldquo;Database&rdquo; is filled in with the name of the failed message database, the &ldquo;Store Type&rdquo; should be selected as Abnormal.</p>
+</blockquote>
+<ol start="4">
+<li>Click &ldquo;Submit.&rdquo; If you see the record as shown below, it means the initialization of the <code>message_node_01</code> node was successful.</li>
+</ol>
+</li>
+</ol>
+<h2 id="iv-display-of-client-demo">
+  (IV) Display of Client Demo
+  <a class="anchor" href="#iv-display-of-client-demo">#</a>
+</h2>
+<p>After completing the above steps, you can go to the mq-client-demo module of CatMQ and start this module. The <code>messageQueue.xml</code> file defines the ConsumerGroup, Topic, and their subscription relationships (meaning: <code>test1sub</code> subscribes to the topics <code>test1</code> and <code>test4</code>). The <code>receiverType</code> specifies the message processing class for each topic.</p>
+<p>The demo is the smallest executable example of CatMQ in the project. Here, we have configured the <code>messageQueue.xml</code>, so you don&rsquo;t need to make any modifications.</p>
+<ol>
+<li>
+<p>Create a topic<br>
+Log in to the system management page (Portal), which is by default at localhost:8090. The initialized username and password are both <code>mqadmin</code>. After logging in, click on &ldquo;Message Topic Management&rdquo; on the left side to enter the following page:
+<img src="img.png" alt="img.png" /><br>
+Click the &ldquo;Create&rdquo; button to enter the topic creation page. Then enter &ldquo;testtopic&rdquo; in the &ldquo;Topic Name&rdquo; field.
+<img src="img_1.png" alt="img_1.png" /><br>
+Click &ldquo;Submit&rdquo; to complete the creation of the topic.</p>
+</li>
+<li>
+<p>Create a ConsumerGroup<br>
+On the management page, click on &ldquo;Consumer Group Management&rdquo; on the left side, then click the &ldquo;Create&rdquo; button to enter the consumerGroup creation page:
+<img src="img_2.png" alt="img_2.png" /><br>
+We create a consumerGroup named <code>testConsumerGroup</code>.
+<img src="img_3.png" alt="img_3.png" /><br>
+After successfully creating it, you can see the success message on the page.
+<img src="img_4.png" alt="img_4.png" /></p>
+</li>
+<li>
+<p>Create a subscription relationship<br>
+Establish the association between the consumerGroup and the topic. Click &ldquo;subscribe&rdquo; on the previous page to start subscribing:
+<img src="img_5.png" alt="img_5.png" /><br>
+Click &ldquo;Add Subscription&rdquo; to create a subscription relationship:
+<img src="img_7.png" alt="img_7.png" /><br>
+Click &ldquo;Confirm,&rdquo; and the subscription is successful:
+<img src="img_8.png" alt="img_8.png" /></p>
+</li>
+<li>
+<p>Start the client demo; run the program:</p>
+<ol>
+<li>Go to &lsquo;cat-mq-client-test\target&rsquo; and execute &lsquo;java -jar mq-client-test-001-1.0.0.jar &ndash;spring.profiles.active=fat&rsquo; to start the client demo.</li>
+<li>Go to &lsquo;ConsumerGroupConsumer,&rsquo; and if you see the following data, it means the client has started successfully and has been registered in the system:
+<img src="img_9.png" alt="img_9.png" /></li>
+</ol>
+</li>
+<li>
+<p>Test message sending and consumption:</p>
+<ol>
+<li>In the browser&rsquo;s address bar or in Postman, enter the following URL: <code>http://localhost:8087/test1?topicName=testtopic&amp;count=2</code>. This means sending 2 messages to Topic: <code>testtopic</code>.</li>
+<li>In the log of <code>catmq-client-test</code>, you will see the following information, indicating that message sending and consumption are both normal:
+<img src="img_10.png" alt="img_10.png" /></li>
+</ol>
+</li>
+<li>
+<p>Common Issues:
+If the application cannot start, check if ports 8080, 8087, 8087 are occupied.</p>
+</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-environment-setup">(I) Environment Setup</a></li>
+    <li><a href="#ii-installation-steps">(II) Installation Steps</a></li>
+    <li><a href="#iii-metadata-initialization">(III) Metadata Initialization</a></li>
+    <li><a href="#iv-display-of-client-demo">(IV) Display of Client Demo</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
