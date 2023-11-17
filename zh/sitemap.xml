@@ -27,16 +27,6 @@
                 />
   </url><url>
     <loc>https://iambiglee.github.io/docs/example/design/serverdesigh/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://iambiglee.github.io/en/docs/example/design/serverdesigh/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://iambiglee.github.io/docs/example/design/serverdesigh/"
-                />
   </url><url>
     <loc>https://iambiglee.github.io/docs/cv/</loc>
     <xhtml:link
@@ -123,16 +113,6 @@
                 />
   </url><url>
     <loc>https://iambiglee.github.io/docs/example/design/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://iambiglee.github.io/en/docs/example/design/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://iambiglee.github.io/docs/example/design/"
-                />
   </url><url>
     <loc>https://iambiglee.github.io/docs/example/deployment/</loc>
     <xhtml:link

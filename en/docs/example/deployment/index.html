@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="部署文档 # 单机部署 # 单机部署可以参考另一篇文章Quickstart。 快速开始 分布式部署 # CatMQ 服务端需要部署的两个包是CatMQ-rest （se">
+<meta name="description" content="Deployment Document # Single-Server Deployment # For single-server deployment, please refer to another article
+Quickstart Distributed Deployment # CatMQ server has two components that need to be deployed: CatMQ-rest (server-side) and CatMQ-ui (portal-side). Both the server-side and portal-side are stateless and have an internally built simple service discovery feature. Therefore, they can be used and deployed without the need for other distributed platform(Like Spring Cloud Eureka, zookeeper).
+To deploy, simply add the corresponding environment configurations in the following directories: \catmq-rest\src\main\resources and \catmq-ui\src\main\resources.">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="运维部属" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Deplyment" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://iambiglee.github.io/en/docs/example/deployment/" />
 
-<title>运维部属 | CatMQ Doc</title>
+<title>Deplyment | CatMQ Doc</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
   <link rel="alternate" hreflang="zh" href="https://iambiglee.github.io/docs/example/deployment/" title="运维部属">
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6f99c8cbdd3a9b40dfb036d06dec00bcf37fbaf825c1d5b185e08e25c731a90f.js" integrity="sha256-b5nIy906m0DfsDbQbewAvPN/uvglwdWxheCOJccxqQ8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f1c1ed06839b349edbeebcc6d5f958e689e141db0ecd2f6f6690a5eb3adeb833.js" integrity="sha256-8cHtBoObNJ7b7rzG1flY5onhQdsOzS9vZpCl6zreuDM=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://iambiglee.github.io/en/docs/example/deployment/index.xml" title="CatMQ Doc" />
 <!--
 Made with Book Theme
@@ -171,23 +173,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-56d7034143b6129da38ab119e891d595" class="toggle"  />
-    <label for="section-56d7034143b6129da38ab119e891d595" class="flex justify-between">
-      <a href="/en/docs/example/design/" class="">Overall Design</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/design/overalldesign/" class="">整体设计</a>
+    <a href="/en/docs/example/deployment/" class="active">Deplyment</a>
   
 
           
@@ -205,102 +191,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/example/design/serverdesigh/" class="">服务端设计</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/design/clientdesign/" class="">Client Design</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/design/highavaliable/" class="">High Availability</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/design/trace/" class="">Trace</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/deployment/" class="active">运维部属</a>
-  
-
-          
-  <ul>
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/en/docs/example/develop/" class="">开发须知</a>
+    <a href="/en/docs/example/develop/" class="">Development Instructions</a>
   
 
           
@@ -341,7 +232,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/en/docs/cv/" class="">个人介绍</a>
+    <a href="/en/docs/cv/" class="">About ME</a>
   
 
           
@@ -388,7 +279,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>运维部属</strong>
+  <strong>Deplyment</strong>
 
   <label for="toc-control">
     
@@ -404,8 +295,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#单机部署">单机部署</a></li>
-    <li><a href="#分布式部署">分布式部署</a></li>
+    <li><a href="#single-server-deployment">Single-Server Deployment</a></li>
+    <li><a href="#distributed-deployment">Distributed Deployment</a></li>
   </ul>
 </nav>
 
@@ -418,32 +309,26 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="部署文档">
-  部署文档
-  <a class="anchor" href="#%e9%83%a8%e7%bd%b2%e6%96%87%e6%a1%a3">#</a>
+  <article class="markdown"><h1 id="deployment-document">
+  Deployment Document
+  <a class="anchor" href="#deployment-document">#</a>
 </h1>
-<h2 id="单机部署">
-  单机部署
-  <a class="anchor" href="#%e5%8d%95%e6%9c%ba%e9%83%a8%e7%bd%b2">#</a>
+<h2 id="single-server-deployment">
+  Single-Server Deployment
+  <a class="anchor" href="#single-server-deployment">#</a>
 </h2>
-<p>单机部署可以参考另一篇文章Quickstart。</p>
+<p>For single-server deployment, please refer to another article</p>
 <ul>
-<li><a href="/en/docs/example/quickstart/">快速开始</a></li>
+<li><a href="/en/docs/example/quickstart/">Quickstart</a></li>
 </ul>
-<h2 id="分布式部署">
-  分布式部署
-  <a class="anchor" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e9%83%a8%e7%bd%b2">#</a>
+<h2 id="distributed-deployment">
+  Distributed Deployment
+  <a class="anchor" href="#distributed-deployment">#</a>
 </h2>
-<p>CatMQ 服务端需要部署的两个包是<code>CatMQ-rest</code> （server端）和<code>CatMQ-ui</code>(portal端), 并且server端和portal端都是无状态，并且内部自制了简单
-的服务发现功能，所以可以在不搭配其他的分布式组件的形式下使用和发布。   <br>
-只需要在\catmq-rest\src\main\resources 和 \catmq-ui\src\main\resources 下添加对应的环境配置即可，例如添加fat环境，
-只需要在上面对应的目录中添加application-fat.properties 文件即可，对应的配置项跟其他环境一样，只是值可能不同。
-<!-- raw HTML omitted -->
-CatMQ中自制的服务发现功能，将各个server端和portal端的状态信息都存在数据库中，并且每隔5秒钟注册心跳，所以只要server端和portal端成功链接上
-数据库即可自动服务发现。这种方案也可以结合Eureka , nginx, nacos 等服务发现的组件。
-<!-- raw HTML omitted -->
-CatMQ 分布式部署重点在于数据库的集群部署，建议使用主从数据库的方式部署元数据库（1主2从），并且交由infrastructure 运维团队运维。确保元数据
-正常使用. 部署的架构图如下所示：</p>
+<p>CatMQ server has two components that need to be deployed: CatMQ-rest (server-side) and CatMQ-ui (portal-side). Both the server-side and portal-side are stateless and have an internally built simple service discovery feature. Therefore, they can be used and deployed without the need for other distributed platform(Like Spring Cloud Eureka, zookeeper).</p>
+<p>To deploy, simply add the corresponding environment configurations in the following directories: <code>\catmq-rest\src\main\resources</code> and <code>\catmq-ui\src\main\resources</code>. For example, to add a configuration for the &lsquo;fat&rsquo; environment, you only need to add the <code>application-fat.properties</code> file in the respective directory. The configuration items are the same as in other environments, with the values possibly being different.</p>
+<p>CatMQ&rsquo;s self-made service discovery feature stores the status information of each server-side and portal-side in the database. Every 5 seconds, a heartbeat is registered. As long as the server-side and portal-side successfully connect to the database, automatic service discovery is enabled. This approach can also be combined with service discovery components such as Eureka, Nginx, zookeeper, etc.</p>
+<p>The key aspect of CatMQ&rsquo;s distributed deployment lies in the cluster deployment of the database. It is recommended to deploy the metadata database using a master-slave configuration (1 master, 2 slaves) and entrust it to the infrastructure operations team for maintenance. This ensures the normal usage of metadata. The deployment architecture is illustrated in the following diagram:</p>
 <p><img src="img.png" alt="img.png" /></p>
 </article>
  
@@ -486,8 +371,8 @@ CatMQ 分布式部署重点在于数据库的集群部署，建议使用主从�
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#单机部署">单机部署</a></li>
-    <li><a href="#分布式部署">分布式部署</a></li>
+    <li><a href="#single-server-deployment">Single-Server Deployment</a></li>
+    <li><a href="#distributed-deployment">Distributed Deployment</a></li>
   </ul>
 </nav>
 

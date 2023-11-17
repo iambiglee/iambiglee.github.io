@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>开发须知 on CatMQ Doc</title>
+    <title>Development Instructions on CatMQ Doc</title>
     <link>https://iambiglee.github.io/en/docs/example/develop/</link>
-    <description>Recent content in 开发须知 on CatMQ Doc</description>
+    <description>Recent content in Development Instructions on CatMQ Doc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <atom:link href="https://iambiglee.github.io/en/docs/example/develop/index.xml" rel="self" type="application/rss+xml" />
